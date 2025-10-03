@@ -6,12 +6,12 @@ session_start();
     $data_nascimento = $_POST['data_nascimento'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $foto = $_FILES['foto'];
     $_SESSION['nome_usuario'] = $nome;
 
     if (empty($email) || empty($senha) || empty($nome) || empty($data_nascimento)) {
         header("Location: erro.html");
         exit();
+    }
 
     $nome_arquivo = $_FILES['foto']['name'];
     $caminho_temporario = $_FILES['foto']['tmp_name'];
@@ -26,14 +26,13 @@ session_start();
     $caminho_destino = "../fotos/" . $novo_nome;
 
     move_uploaded_file($caminho_temporario, $caminho_destino);
-}
-    $sql = "INSERT INTO tb_usuario VALUES (null, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_usuario (usuario_nome, usuario_datanascimento, usuario_email, usuario_senha, usuario_foto) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     // letra s -> varchar, date, datetime, char
     // letra i -> int
     // letra d -> float, decimal
-    mysqli_stmt_bind_param($comando, 'ssssss', $nome, $data_nascimento, $email, $senha, $novo_nome);
+    mysqli_stmt_bind_param($comando, 'sssss', $nome, $data_nascimento, $email, $senha, $novo_nome);
 
     mysqli_stmt_execute($comando);
 
