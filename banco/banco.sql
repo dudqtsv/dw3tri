@@ -161,8 +161,7 @@ VALUES
   ('Carne Moída 1kg', 18.50, 1, 'carne_moida.png'),
   ('Sardinha em Lata 180g', 3.80, 1, 'sardinha_lata.png'),
   ('Atum em Lata 170g', 6.20, 1, 'atum_lata.png'),
-  ('Sopa Instantânea 60g', 2.10, 1, 'sopa_instantanea.png');
-  
+  ('Sopa Instantânea 60g', 2.10, 1, 'sopa_instantanea.png'),
   ('Sabonete Lux 85g', 2.20, 2, 'sabonete_lux.png'),
   ('Shampoo Head & Shoulders 400ml', 18.90, 2, 'shampoo_head_shoulders.png'),
   ('Condicionador Dove 400ml', 16.50, 2, 'condicionador_dove.png'),
@@ -182,8 +181,7 @@ VALUES
   ('Cotonetes Johnsons 100 unidades', 5.00, 2, 'cotonetes_johnsons.png'),
   ('Escova de Cabelo Tangle Teezer', 25.00, 2, 'escova_cabelo_tangle_teezer.png'),
   ('Hidratante para Mãos Avon 200g', 12.50, 2, 'hidratante_maos_avon.png'),
-  ('Pente de Cabelo 25cm', 4.00, 2, 'pente_cabelo.png');
-
+  ('Pente de Cabelo 25cm', 4.00, 2, 'pente_cabelo.png'),
   ('Desinfetante Pinho Sol 500ml', 6.90, 3, 'desinfetante_pinho_sol.png'),
   ('Sabão em Pó Omo 1kg', 7.50, 3, 'sabon_em_po_omo.png'),
   ('Detergente Líquido Ypê 500ml', 2.50, 3, 'detergente_ypê.png'),
@@ -210,4 +208,69 @@ VALUES
   ('Álcool 70º 1L', 7.30, 3, 'alcool_70.png'),
   ('Esponja para Cozinha 3 unidades', 3.00, 3, 'esponja_cozinha.png'),
   ('Rodo de Borracha 50cm', 10.00, 3, 'rodo_borracha.png');
+
+INSERT INTO `supermercado`.`tb_estoque` 
+  (`produto_id`, `estoque_qtd`, `estoque_data`) 
+VALUES
+  (1, 100, '2025-10-10'),  -- Arroz Branco 5kg
+  (2, 150, '2025-10-10'),  -- Feijão Carioca 1kg
+  (3, 200, '2025-10-10'),  -- Macarrão Espaguete 500g
+  (4, 120, '2025-10-10'),  -- Óleo de Soja 900ml
+  (5, 180, '2025-10-10'),  -- Açúcar Cristal 1kg
+  (6, 160, '2025-10-10'),  -- Sal Grosso 1kg
+  (7, 90, '2025-10-10'),   -- Leite Integral 1L
+  (8, 80, '2025-10-10'),   -- Leite Condensado 395g
+  (9, 70, '2025-10-10'),   -- Queijo Mussarela 500g
+  (10, 200, '2025-10-10'), -- Presunto 200g
+  (11, 300, '2025-10-10'), -- Pão Francês 500g
+  (12, 250, '2025-10-10'), -- Café Torrado 500g
+  (13, 100, '2025-10-10'), -- Chá de Erva Doce 30g
+  (14, 220, '2025-10-10'), -- Biscoito Recheado 150g
+  (15, 150, '2025-10-10'), -- Maçã Gala 1kg
+  (16, 180, '2025-10-10'), -- Banana Prata 1kg
+  (17, 160, '2025-10-10'), -- Laranja Pera 1kg
+  (18, 140, '2025-10-10'), -- Tomate 1kg
+  (19, 130, '2025-10-10'), -- Cebola 1kg
+  (20, 100, '2025-10-10'), -- Alho 200g
+  (21, 200, '2025-10-10'), -- Batata Doce 1kg
+  (22, 180, '2025-10-10'), -- Abóbora 1kg
+  (23, 90, '2025-10-10'),  -- Peito de Frango 1kg
+  (24, 120, '2025-10-10'), -- Carne Moída 1kg
+  (25, 150, '2025-10-10'), -- Sardinha em Lata 180g
+  (26, 110, '2025-10-10'), -- Atum em Lata 170g
+  (27, 220, '2025-10-10'), -- Sopa Instantânea 60g
+  (28, 150, '2025-10-10'), -- Sabonete Lux 85g
+  (29, 180, '2025-10-10'), -- Shampoo Head & Shoulders 400ml
+  (30, 200, '2025-10-10'), -- Condicionador Dove 400ml
+  (31, 170, '2025-10-10'), -- Desodorante Rexona Aerosol 150ml
+  (32, 190, '2025-10-10'), -- Pasta de Dente Colgate 90g
+  (33, 120, '2025-10-10'), -- Escova de Dente Colgate
+  (34, 160, '2025-10-10'), -- Creme Hidratante Nivea 200g
+  (35, 140, '2025-10-10'), -- Desodorante Dove Roll-on 50ml
+  (36, 180, '2025-10-10'), -- Hidratante Corporal Neutrogena 400ml
+  (37, 200, '2025-10-10'), -- Papel Higiênico Neve 12 unidades
+  (38, 150, '2025-10-10'), -- Lenço Umedecido Johnsons 50 unidades
+  (39, 180, '2025-10-10'), -- Creme Dental Sensodyne 90g
+  (40, 120, '2025-10-10'), -- Água Micelar Garnier 200ml
+  (41, 90, '2025-10-10'),  -- Protetor Solar La Roche-Posay 50g
+  (42, 220, '2025-10-10'), -- Shampoo Pantene 400ml
+  (43, 180, '2025-10-10'), -- Desodorante Adidas Aerosol 150ml
+  (44, 130, '2025-10-10'), -- Cotonetes Johnsons 100 unidades
+  (45, 110, '2025-10-10'), -- Escova de Cabelo Tangle Teezer
+  (46, 150, '2025-10-10'), -- Hidratante para Mãos Avon 200g
+  (47, 180, '2025-10-10'), -- Pente de Cabelo 25cm
+  (48, 160, '2025-10-10'), -- Desinfetante Pinho Sol 500ml
+  (49, 190, '2025-10-10'), -- Sabão em Pó Omo 1kg
+  (50, 220, '2025-10-10'), -- Detergente Líquido Ypê 500ml
+  (51, 210, '2025-10-10'), -- Amaciante Confort 1L
+  (52, 180, '2025-10-10'), -- Água Sanitária 1L
+  (53, 150, '2025-10-10'), -- Desinfetante Lysoform 500ml
+  (54, 170, '2025-10-10'), -- Limpador Multiuso Veja 500ml
+  (55, 200, '2025-10-10'), -- Pano de Chão 50x70cm
+  (56, 130, '2025-10-10'), -- Esponja de Aço Bombril 5 unidades
+  (57, 120, '2025-10-10'), -- Limpa Vidros Veja 500ml
+  (58, 140, '2025-10-10'), -- Desinfetante Casa e Jardim 500ml
+  (59, 150, '2025-10-10'), -- Desengordurante Poliflor 500ml
+  (60, 170, '2025-10-10'); -- Papel Toalha Scott 4 rolos
+
 
