@@ -112,3 +112,102 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `supermercado`.`tb_usuario` 
+  (`usuario_nome`, `usuario_datanascimento`, `usuario_email`, `usuario_senha`, `usuario_foto`) 
+VALUES 
+  ('João Silva', '1985-05-15', 'joao.silva@email.com', '123', 'foto_joao.png'),
+  ('Maria Oliveira', '1990-11-22', 'maria.oliveira@email.com', '456', 'foto_maria.png'),
+  ('Pedro Souza', '1992-07-09', 'pedro.souza@email.com', '789', 'foto_pedro.png'),
+  ('Carlos Pereira', '1980-08-14', 'carlos.pereira@email.com', '112', 'foto_carlos.png');
+
+  INSERT INTO `supermercado`.`tb_usuario` 
+  (`usuario_nome`, `usuario_datanascimento`, `usuario_email`, `usuario_senha`, `usuario_tipo`, `usuario_foto`) 
+VALUES 
+    ('Ana Costa', '1988-02-28', 'ana.costa@email.com', '101', 'g', 'foto_ana.png');
+
+INSERT INTO `supermercado`.`tb_categoria` (`categoria_nome`) 
+VALUES
+  ('Comidas e Bebidas'),
+  ('Higiene e Beleza'),
+  ('Limpeza Doméstica');
+
+INSERT INTO `supermercado`.`tb_produto` 
+  (`produto_nome`, `produto_preco`, `categoria_id`, `produto_foto`) 
+VALUES
+  ('Arroz Branco 5kg', 19.99, 1, 'arroz_5kg.png'),
+  ('Feijão Carioca 1kg', 8.50, 1, 'feijao_1kg.png'),
+  ('Macarrão Espaguete 500g', 4.90, 1, 'macarrao_espaguete.png'),
+  ('Óleo de Soja 900ml', 6.80, 1, 'oleo_soja.png'),
+  ('Açúcar Cristal 1kg', 3.30, 1, 'acucar_1kg.png'),
+  ('Sal Grosso 1kg', 2.20, 1, 'sal_grosso.png'),
+  ('Leite Integral 1L', 3.00, 1, 'leite_integral.png'),
+  ('Leite Condensado 395g', 4.50, 1, 'leite_condensado.png'),
+  ('Queijo Mussarela 500g', 12.90, 1, 'queijo_mussarela.png'),
+  ('Presunto 200g', 7.50, 1, 'presunto.png'),
+  ('Pão Francês 500g', 3.00, 1, 'pao_frances.png'),
+  ('Café Torrado 500g', 10.99, 1, 'cafe_torrado.png'),
+  ('Chá de Erva Doce 30g', 2.50, 1, 'cha_erva_doce.png'),
+  ('Biscoito Recheado 150g', 3.20, 1, 'biscoito_recheado.png'),
+  ('Maçã Gala 1kg', 4.00, 1, 'maca_gala.png'),
+  ('Banana Prata 1kg', 3.50, 1, 'banana_prata.png'),
+  ('Laranja Pera 1kg', 5.20, 1, 'laranja_pera.png'),
+  ('Tomate 1kg', 7.90, 1, 'tomate.png'),
+  ('Cebola 1kg', 4.80, 1, 'cebola.png'),
+  ('Alho 200g', 5.00, 1, 'alho.png'),
+  ('Batata Doce 1kg', 6.00, 1, 'batata_doce.png'),
+  ('Abóbora 1kg', 4.50, 1, 'abobora.png'),
+  ('Peito de Frango 1kg', 14.90, 1, 'peito_frango.png'),
+  ('Carne Moída 1kg', 18.50, 1, 'carne_moida.png'),
+  ('Sardinha em Lata 180g', 3.80, 1, 'sardinha_lata.png'),
+  ('Atum em Lata 170g', 6.20, 1, 'atum_lata.png'),
+  ('Sopa Instantânea 60g', 2.10, 1, 'sopa_instantanea.png');
+  
+  ('Sabonete Lux 85g', 2.20, 2, 'sabonete_lux.png'),
+  ('Shampoo Head & Shoulders 400ml', 18.90, 2, 'shampoo_head_shoulders.png'),
+  ('Condicionador Dove 400ml', 16.50, 2, 'condicionador_dove.png'),
+  ('Desodorante Rexona Aerosol 150ml', 9.90, 2, 'desodorante_rexona.png'),
+  ('Pasta de Dente Colgate 90g', 4.50, 2, 'pasta_dente_colgate.png'),
+  ('Escova de Dente Colgate', 6.50, 2, 'escova_dente_colgate.png'),
+  ('Creme Hidratante Nivea 200g', 14.90, 2, 'creme_hidratante_nivea.png'),
+  ('Desodorante Dove Roll-on 50ml', 7.50, 2, 'desodorante_dove_rollon.png'),
+  ('Hidratante Corporal Neutrogena 400ml', 22.00, 2, 'hidratante_neutrogena.png'),
+  ('Papel Higiênico Neve 12 unidades', 15.90, 2, 'papel_higienico_neve.png'),
+  ('Lenço Umedecido Johnsons 50 unidades', 10.90, 2, 'lenco_umidecido_johnsons.png'),
+  ('Creme Dental Sensodyne 90g', 11.80, 2, 'creme_dental_sensodyne.png'),
+  ('Água Micelar Garnier 200ml', 19.99, 2, 'agua_micelar_garnier.png'),
+  ('Protetor Solar La Roche-Posay 50g', 35.00, 2, 'protetor_solar_laroche.png'),
+  ('Shampoo Pantene 400ml', 15.00, 2, 'shampoo_pantene.png'),
+  ('Desodorante Adidas Aerosol 150ml', 11.90, 2, 'desodorante_adidas.png'),
+  ('Cotonetes Johnsons 100 unidades', 5.00, 2, 'cotonetes_johnsons.png'),
+  ('Escova de Cabelo Tangle Teezer', 25.00, 2, 'escova_cabelo_tangle_teezer.png'),
+  ('Hidratante para Mãos Avon 200g', 12.50, 2, 'hidratante_maos_avon.png'),
+  ('Pente de Cabelo 25cm', 4.00, 2, 'pente_cabelo.png');
+
+  ('Desinfetante Pinho Sol 500ml', 6.90, 3, 'desinfetante_pinho_sol.png'),
+  ('Sabão em Pó Omo 1kg', 7.50, 3, 'sabon_em_po_omo.png'),
+  ('Detergente Líquido Ypê 500ml', 2.50, 3, 'detergente_ypê.png'),
+  ('Amaciante Confort 1L', 8.00, 3, 'amaciante_confort.png'),
+  ('Água Sanitária 1L', 4.20, 3, 'agua_sanitária.png'),
+  ('Desinfetante Lysoform 500ml', 5.80, 3, 'desinfetante_lysoform.png'),
+  ('Limpador Multiuso Veja 500ml', 6.30, 3, 'limpador_veja.png'),
+  ('Pano de Chão 50x70cm', 3.50, 3, 'pano_de_chao.png'),
+  ('Esponja de Aço Bombril 5 unidades', 3.90, 3, 'esponja_bombril.png'),
+  ('Limpa Vidros Veja 500ml', 5.50, 3, 'limpa_vidros_veja.png'),
+  ('Desinfetante Casa e Jardim 500ml', 6.00, 3, 'desinfetante_casa_jardim.png'),
+  ('Desengordurante Poliflor 500ml', 7.20, 3, 'desengordurante_poliflor.png'),
+  ('Papel Toalha Scott 4 rolos', 10.50, 3, 'papel_toalha_scott.png'),
+  ('Limpador Desinfetante 500ml', 4.70, 3, 'limpador_desinfetante.png'),
+  ('Detergente Fairy 500ml', 3.80, 3, 'detergente_fairy.png'),
+  ('Sabão Líquido 1L', 5.50, 3, 'sabon_liquido_1l.png'),
+  ('Refil de Sabão em Pó 500g', 4.20, 3, 'refil_sabon_po.png'),
+  ('Limpeza Geral Limpador Cif 500ml', 6.80, 3, 'limpador_cif.png'),
+  ('Protetor de Móveis 250ml', 9.90, 3, 'protetor_moveis.png'),
+  ('Sabão de Coco 250g', 3.00, 3, 'sabon_coco.png'),
+  ('Lustra Móveis 300ml', 7.00, 3, 'lustra_moveis.png'),
+  ('Cloro Gel 500g', 6.50, 3, 'cloro_gel.png'),
+  ('Limpador Cloro 1L', 4.90, 3, 'limpador_cloro.png'),
+  ('Álcool 70º 1L', 7.30, 3, 'alcool_70.png'),
+  ('Esponja para Cozinha 3 unidades', 3.00, 3, 'esponja_cozinha.png'),
+  ('Rodo de Borracha 50cm', 10.00, 3, 'rodo_borracha.png');
+
