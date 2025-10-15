@@ -132,11 +132,11 @@ VALUES
 VALUES 
     ('Ana Costa', '1988-02-28', 'ana.costa@email.com', '101', 'g', 'foto_ana.png');
 
-INSERT INTO `supermercado`.`tb_categoria` (`categoria_nome`) 
+INSERT INTO `supermercado`.`tb_categoria` (`categoria_id`, `categoria_nome`) 
 VALUES
-  ('Comidas e Bebidas'),
-  ('Higiene e Beleza'),
-  ('Limpeza Doméstica');
+  (1 ,'Comidas e Bebidas'),
+  (2 ,'Higiene e Beleza'),
+  (3 ,'Limpeza Doméstica');
 
 INSERT INTO `supermercado`.`tb_produto` 
   (`produto_nome`, `produto_preco`, `categoria_id`, `produto_foto`) 
