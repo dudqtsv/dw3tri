@@ -9,7 +9,7 @@ session_start();
     $_SESSION['nome_usuario'] = $nome;
 
     if (empty($email) || empty($senha) || empty($nome) || empty($data_nascimento)) {
-        header("Location: erro.html");
+        header("Location: ../erro.html");
         exit();
     }
 

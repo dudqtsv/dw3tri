@@ -7,7 +7,7 @@
 </head>
 <body>
     <nav><h1>Supermercado Imperial</h1></nav>
-    <form action="login.php" method="$_POST">
+    <form action="cadastro/login.php" method="post">
         <h1>Login</h1>
         <p>E-mail</p><input type="text" name="email" required>
         <p>Senha</p><input type="password" name="senha" required>
