@@ -15,7 +15,7 @@ $resultados = mysqli_stmt_get_result($comando);
 $quantidade = mysqli_num_rows($resultados);
 
 if ($quantidade == 0) {
-    header('Location: index.php?msg=erro');
+    header('Location: ../index.php?msg=erro');
     exit;
 } 
 else {
@@ -59,4 +59,4 @@ else {
         $_SESSION['foto'] = $gerente['usuario_foto'];
         $_SESSION['tipo'] = $gerente['usuario_tipo'];
     }
-    header('Location: home.php');
+    header('Location: ../home.php');
