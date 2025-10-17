@@ -14,8 +14,7 @@
     <?php
     if (isset($_GET['msg'])) {
         $msg = $_GET['msg'];
-    } 
-    else {
+    } else {
         $msg = 0;
     }
     if ($msg != 0) {
