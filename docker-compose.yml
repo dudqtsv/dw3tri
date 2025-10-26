@@ -2,21 +2,32 @@ version: "3"
 services:
   php:
     build: .
-    container_name: "apache_php"
+    container_name: apache_php
     image: php:8.1.16-apache
     volumes:
       - ./:/var/www/html/
     ports:
-      - 81:80
+      - "81:80"
+    depends_on:
+      - db
+    networks:
+      - app-network
   
   db:
     image: mariadb:10.5
-    container_name: "mariadb-server"
+    container_name: mariadb-server
     restart: always
     volumes:
       - ./banco/banco.sql:/docker-entrypoint-initdb.d/banco.sql
     environment:
       - MARIADB_USER=root
       - MARIADB_ROOT_PASSWORD=123
+      - MARIADB_DATABASE=supermercado
     ports:
-      - 3307:3306
+      - "3307:3306"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
