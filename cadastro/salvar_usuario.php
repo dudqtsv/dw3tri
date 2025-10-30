@@ -15,7 +15,7 @@ if (empty($email) || empty($senha) || empty($nome) || empty($data_nascimento)) {
 $nome_arquivo = $_FILES['foto']['name'];
 
 if ($nome_arquivo == "") {
-    $novo_nome = "./foto/generico.png";
+    $novo_nome = "generico.png";
 } else {
     $caminho_temporario = $_FILES['foto']['tmp_name'];
     $extensao = pathinfo($nome_arquivo, PATHINFO_EXTENSION);
