@@ -8,9 +8,6 @@
 </head>
 
 <body>
-    <nav>
-        <h1>Supermercado Imperial</h1>
-    </nav>
     <?php
     if (isset($_GET['msg'])) {
         $msg = $_GET['msg'];
@@ -20,7 +17,18 @@
     if ($msg != 0) {
         echo "<p>Usuário inexistente</p>";
     }
+    if (isset($_GET['erro'])) {
+        $erro1 = $_GET['erro'];
+    } else {
+        $erro1 = 0;
+    }
+    if ($erro1 != 0) {
+        echo "<p>Não é possível acessar essa página sem uma conta logada.</p>";
+    }
     ?>
+    <nav>
+        <h1>Supermercado Imperial</h1>
+    </nav>
     <form action="cadastro/login.php" method="post">
         <h1>Login</h1>
         <p>E-mail</p><input type="text" name="email" required>

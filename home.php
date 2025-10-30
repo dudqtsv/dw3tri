@@ -1,6 +1,13 @@
-    <?php
-    require_once "conexao.php";
+<?php
     session_start();
+    require_once "conexao.php";
+
+    if (!isset($_SESSION['id'])) {
+        header("Location: index.php?erro=1");
+        exit();
+    }
+    $id_usuario = $_SESSION['id'];
+    $foto_usuario = $_SESSION['foto_usuario'];
 
     $sql = "SELECT * FROM tb_usuario;";
     $comando = mysqli_prepare($conexao, $sql);
@@ -15,4 +22,15 @@
     echo "<div>";
     echo "<p>Olá $nome! Seja bem vindo(a).</p>";
     echo "</div>";
-    ?>
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="logout.php">Sair</a>
+</body>
+</html>

@@ -9,13 +9,13 @@ $senha = $_POST['senha'];
 $_SESSION['nome_usuario'] = $nome;
 
 if (empty($email) || empty($senha) || empty($nome) || empty($data_nascimento)) {
-    header("Location: ../erro.html");
+    header("Location: form_cadastro.php?erro=vazio");
     exit();
 }
 $nome_arquivo = $_FILES['foto']['name'];
 
 if ($nome_arquivo == "") {
-    $novo_nome = "generico.png";
+    $novo_nome = "../fotos/generico.png";
 } else {
     $caminho_temporario = $_FILES['foto']['tmp_name'];
     $extensao = pathinfo($nome_arquivo, PATHINFO_EXTENSION);
@@ -31,6 +31,7 @@ mysqli_stmt_execute($comando);
 
 $id = mysqli_stmt_insert_id($comando);
 $_SESSION['id'] = $id;
+$_SESSION['foto_usuario'] = $novo_nome;
 
 mysqli_stmt_close($comando);
 
