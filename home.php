@@ -7,7 +7,6 @@
         exit();
     }
     $id_usuario = $_SESSION['id'];
-    $foto_usuario = $_SESSION['foto_usuario'];
 
     $sql = "SELECT * FROM tb_usuario;";
     $comando = mysqli_prepare($conexao, $sql);
@@ -21,6 +20,7 @@
 
     echo "<div>";
     echo "<p>Olá $nome! Seja bem vindo(a).</p>";
+    echo "<img src='fotos/$foto';>";
     echo "</div>";
 ?>
 <!DOCTYPE html>
