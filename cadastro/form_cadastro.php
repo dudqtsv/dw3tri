@@ -2,20 +2,7 @@
 session_start();
 require_once "../conexao.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-</head>
 <?php
-if (!isset($_SESSION['id'])) {
-    header("Location: ../index.php?erro=1");
-    exit();
-}
 if (isset($_GET['erro'])) {
     $erro = $_GET['erro'];
 } else {
@@ -26,6 +13,15 @@ if ($erro != 0) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
 <body>
     <div>
         <h1>Criar nova conta</h1>
