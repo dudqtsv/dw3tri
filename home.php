@@ -2,10 +2,10 @@
     session_start();
     require_once "conexao.php";
 
-    if (!isset($_SESSION['id'])) {
-        header("Location: index.php?erro=1");
-        exit();
-    }
+    require '../verificar_login.php';
+
+    verificarLogin();
+
     $id_usuario = $_SESSION['id'];
 
     $sql = "SELECT * FROM tb_usuario;";
