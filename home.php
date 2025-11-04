@@ -1,8 +1,5 @@
 <?php
-    session_start();
-    require_once "conexao.php";
-
-    require '../verificar_login.php';
+    require 'verificar_login.php';
 
     verificarLogin();
 
