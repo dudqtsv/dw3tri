@@ -8,12 +8,14 @@ if ($tipo != 'g') {
 //
 if (isset($_GET['acao'])) {
     echo "<h1>Editar produto</h1>";
-    $nome = $_SESSION['produto_nome'];
 }
-
-
-
-
+else {
+    echo "<h1>Cadastro de produtos</h1>";
+    $id = 0;
+    $nome = "";
+    $nascimento = "";
+    $nacionalidade = "";
+}
 
 //  $sql = "SELECT * FROM tb_produto WHERE produto_id = ?";
 //     $comando = mysqli_prepare($conexao, $sql);
@@ -27,13 +29,11 @@ if (isset($_GET['acao'])) {
 //     $nome = $autor['nome'];
 //     $nascimento = $autor['data_nascimento'];
 //     $nacionalidade = $autor['nacionalidade'];
-else {
-    echo "<h1>Cadastro de produtos</h1>";
-    $id = 0;
-    $nome = "";
-    $nascimento = "";
-    $nacionalidade = "";
-}
+//
+$nome = $_SESSION['produto_nome'];
+$preco = $_SESSION['preco'];
+$categoria = $_SESSION['categoria'];
+$foto = $_SESSION['produto_foto'];
 //
 if (isset($_GET['erro'])) {
     $erro = $_GET['erro'];

@@ -43,6 +43,7 @@
                     echo "<a href='form_produto.php?acao=editar'>Editar</a>";
                 }
         echo "</div>";
+        echo "</div>";
     }
     ?>
 </body>
