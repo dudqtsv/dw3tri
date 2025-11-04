@@ -1,6 +1,7 @@
 <?php
     require "../verificar_login.php";
     verificarLogin();
+    $tipo = $_SESSION['tipo'];
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2>Lista de produtos</h2>
+    <h2>Lista de produtos</h2> <a href="form_produto.php">Adicionar produto</a>
 
     <?php
 
@@ -38,8 +39,8 @@
                 echo "<img src='../fotos/$foto' class='card-img-top'>";
                 echo "<div class='card-body'>";
                 echo "<p class='card-text'>$nome - R$$preco_formatado</p>";
-                if ($_SESSION['usuario_tipo'] != 'c') {
-                    echo "<a href='form_produto.php?tipo=$usuario_tipo'>Editar</a>";
+                if ($tipo != 'c') {
+                    echo "<a href='form_produto.php?acao=editar'>Editar</a>";
                 }
         echo "</div>";
     }

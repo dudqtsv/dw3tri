@@ -1,33 +1,34 @@
 <?php
-    require 'verificar_login.php';
+require 'verificar_login.php';
+verificarLogin();
 
-    verificarLogin();
-
-    $id_usuario = $_SESSION['id'];
-
-    $sql = "SELECT * FROM tb_usuario;";
-    $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_execute($comando);
-    $resultados = mysqli_stmt_get_result($comando);
-
-    while ($usuario = mysqli_fetch_assoc($resultados)) {
-        $foto = $usuario['usuario_foto'];
-        $nome = $usuario['usuario_nome'];
-    }
-
-    echo "<div>";
-    echo "<p>Olá $nome! Seja bem vindo(a).</p>";
-    echo "<img src='fotos/$foto';>";
-    echo "</div>";
+$id_usuario = $_SESSION['id'];
+$foto = $_SESSION['foto'];
+$nome = $_SESSION['nome'];
+$tipo = $_SESSION['tipo'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        iframe {
+            width: 100%;
+        }
+    </style>
     <title>Document</title>
 </head>
+
 <body>
+    <?php
+    echo "<div>";
+    echo "<p>Olá, $nome! Seja bem vindo(a).</p>";
+    echo "</div>";
+    ?>
+    <iframe src="produtos/index.php"></iframe>
     <a href="logout.php">Sair</a>
 </body>
+
 </html>
