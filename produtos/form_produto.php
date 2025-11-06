@@ -30,11 +30,25 @@ else {
 //     $nascimento = $autor['data_nascimento'];
 //     $nacionalidade = $autor['nacionalidade'];
 //
-$nome = $_SESSION['produto_nome'];
-$preco = $_SESSION['preco'];
-$categoria = $_SESSION['categoria'];
-$foto = $_SESSION['produto_foto'];
+
+if (isset($_SESSION['produto_nome'])) {
+    $nome = $_SESSION['produto_nome'];
+}
+
+if (isset($_SESSION['preco'])) {
+    $preco = $_SESSION['preco'];
+}
+
+if (isset($_SESSION['categoria'])) {
+    $categoria = $_SESSION['categoria'];
+}
+
+if (isset($_SESSION['produto_foto'])) {
+    $foto = $_SESSION['produto_foto'];
+}
+
 //
+
 if (isset($_GET['erro'])) {
     $erro = $_GET['erro'];
 } else {

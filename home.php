@@ -28,6 +28,7 @@ $tipo = $_SESSION['tipo'];
     echo "</div>";
     ?>
     <iframe src="produtos/index.php"></iframe>
+    <a href="produtos/index.php">Todos os produtos</a>
     <a href="logout.php">Sair</a>
 </body>
 
