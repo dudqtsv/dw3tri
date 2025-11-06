@@ -2,11 +2,14 @@
 require "../verificar_login.php";
 verificarLogin();
 $tipo = $_SESSION['tipo'];
-//
+
+// Variável de busca
 $busca = "";
 if (isset($_GET['busca'])) {
     $busca = trim($_GET['busca']);
 }
+
+// Monta o SQL com ou sem busca
 if ($busca != "") {
     $sql = "SELECT * FROM tb_produto WHERE produto_nome LIKE ?";
     $comando = mysqli_prepare($conexao, $sql);
@@ -16,95 +19,104 @@ if ($busca != "") {
     $sql = "SELECT * FROM tb_produto";
     $comando = mysqli_prepare($conexao, $sql);
 }
+
 mysqli_stmt_execute($comando);
 $resultado = mysqli_stmt_get_result($comando);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <title>Lista de Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            padding: 20px;
+        }
+        .pesquisa {
+            margin-bottom: 20px;
+        }
+        .card {
+            width: 10rem;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .card img {
+            height: 100px;
+            object-fit: cover;
+        }
+        .mensagem-vazia {
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Lista de produtos</h2> <a href="form_produto.php">Adicionar produto</a>
+    <h2>Lista de produtos</h2> 
+    <a href="form_produto.php">Adicionar produto</a>
+    <a href="../home.php">Voltar</a>
+
+    <!-- Formulário de busca -->
     <form method="get" class="pesquisa" action="#resultados">
-        <input type="text" name="busca" placeholder="Pesquisar produto..." value="<?= htmlspecialchars($busca) ?>">
+        <input type="text" name="busca" placeholder="Pesquisar produto..." 
+               value="<?= htmlspecialchars($busca) ?>">
         <input type="submit" value="Buscar">
     </form>
 
+    <!-- Resultados -->
     <div id="resultados">
-        <?php while ($produto = mysqli_fetch_assoc($resultado)): ?>
-            <div class="produto">
-                <h3><?= htmlspecialchars($produto['produto_nome']) ?></h3>
-                <!-- Exiba outras informações do produto aqui -->
-            </div>
-        <?php endwhile; ?>
+        <?php if (mysqli_num_rows($resultado) > 0): ?>
+            <?php while ($produto = mysqli_fetch_assoc($resultado)): ?>
+                <?php
+                    $produto_id = $produto['produto_id'];
+                    $nome = $produto['produto_nome'];
+                    $preco = $produto['produto_preco'];
+                    $foto = $produto['produto_foto'];
+                    $preco_formatado = number_format(round($preco, 2), 2, ',', '.');
+                ?>
+
+                <div class="card">
+                    <img src="../fotos/<?= htmlspecialchars($foto) ?>" class="card-img-top" alt="<?= htmlspecialchars($nome) ?>">
+                    <div class="card-body">
+                        <p class="card-text"><?= htmlspecialchars($nome) ?> - R$<?= $preco_formatado ?></p>
+                        <?php if ($tipo != 'c'): ?>
+                            <a href="form_produto.php?acao=editar&id=<?= $produto_id ?>">Editar</a> 
+                            <a href="deletar_produto.php?id=<?= $produto_id ?>">
+                                <img src="../fotos/delete-button.png" width="20px" alt="Excluir">
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p class="mensagem-vazia">Nenhum produto encontrado.</p>
+        <?php endif; ?>
     </div>
 
-<script>
-    window.addEventListener('load', function() {
-        // Verifica se existe uma âncora na URL
-        if (window.location.hash) {
-            setTimeout(function() {
-                // Encontra o elemento com o ID correspondente à âncora (como #resultados)
-                var targetElement = document.querySelector(window.location.hash);
-                
-                if (targetElement) {
-                    // Ajuste a rolagem para levar em conta a altura do cabeçalho fixo
-                    var offset = 70;  // Ajuste para a altura do seu cabeçalho fixo
-
-                    // Utiliza scrollIntoView() com um pequeno ajuste para o offset
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'  // Certifica-se que o elemento fique no topo da tela
-                    });
-
-                    // Corrige o deslocamento da rolagem
-                    window.scrollBy(0, -offset); // Desloca um pouco para cima, compensando o cabeçalho
-                }
-            }, 100);  // Espera um pequeno tempo para garantir que o elemento foi encontrado
-        }
-    });
-</script>
-
-
-
-    <?php
-    $sql = "SELECT * FROM tb_produto";
-
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_execute($comando);
-
-    $resultados = mysqli_stmt_get_result($comando);
-
-    while ($produtos = mysqli_fetch_assoc($resultados)) {
-        $produto_id = $produtos['produto_id'];
-        $nome = $produtos['produto_nome'];
-        $preco = $produtos['produto_preco'];
-        $categoria_id = $produtos['categoria_id'];
-        $foto = $produtos['produto_foto'];
-
-        $preco_arredondado = round($preco, 2);
-        $preco_formatado = number_format($preco_arredondado, 2, '.', '');
-
-        echo "<div class='card' style='width: 10rem;'>";
-        echo "<img src='../fotos/$foto' class='card-img-top'>";
-        echo "<div class='card-body'>";
-        echo "<p class='card-text'>$nome - R$$preco_formatado</p>";
-        if ($tipo != 'c') {
-            echo "<a href='form_produto.php?acao=editar'>Editar</a>";
-            echo "<a href='deletar_produto.php?id=$produto_id'><img src='../fotos/delete-button.png' width='20px'></a>";
-        }
-    }
-    echo "</div>";
-    echo "</div>";
-    ?>
+    <!-- Script para rolar suavemente até os resultados -->
+    <script>
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                setTimeout(function() {
+                    var targetElement = document.querySelector(window.location.hash);
+                    if (targetElement) {
+                        var offset = 70;
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        window.scrollBy(0, -offset);
+                    }
+                }, 100);
+            }
+        });
+    </script>
 </body>
-
 </html>
