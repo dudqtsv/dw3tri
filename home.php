@@ -29,6 +29,11 @@ $tipo = $_SESSION['tipo'];
     ?>
     <iframe src="produtos/index.php"></iframe>
     <a href="produtos/index.php">Todos os produtos</a>
+    <?php
+    if ($tipo != 'g') {
+    echo "<a href='lista/index.php'>Minha lista</a>";
+    }
+    ?>
     <a href="logout.php">Sair</a>
 </body>
 
