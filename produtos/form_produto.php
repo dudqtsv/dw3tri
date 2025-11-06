@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once "../conexao.php";
+require '../verificar_login.php';
+verificarLogin();
 $tipo = $_SESSION['tipo'];
 if ($tipo != 'g') {
     header('Location: index.php');

@@ -60,8 +60,15 @@ $resultado = mysqli_stmt_get_result($comando);
 
 <body>
     <h2>Lista de produtos</h2> 
-    <a href="form_produto.php">Adicionar produto</a>
-    <a href="../home.php">Voltar</a>
+    <?php if ($tipo != 'c') {
+    echo "<a href='form_produto.php'>Adicionar produto</a>";
+    echo "<a href='../home.php'>Voltar</a>";
+    }
+
+    else {
+        echo "<a href='../home.php'>Voltar</a>";     
+    }
+    ?>
 
     <!-- Formulário de busca -->
     <form method="get" class="pesquisa" action="#resultados">
