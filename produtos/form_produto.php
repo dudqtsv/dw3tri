@@ -1,5 +1,5 @@
 <?php
-require '../verificar_login.php';
+require '../verificarLoginPasta.php';
 verificarLogin();
 $tipo = $_SESSION['tipo'];
 if ($tipo != 'g') {
