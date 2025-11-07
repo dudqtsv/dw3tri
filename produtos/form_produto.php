@@ -5,46 +5,31 @@ $tipo = $_SESSION['tipo'];
 if ($tipo != 'g') {
     header('Location: index.php');
 }
+
 //
+
 if (isset($_GET['acao'])) {
     echo "<h1>Editar produto</h1>";
-}
-else {
+
+    $sql = "SELECT * FROM tb_produto WHERE produto_id = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $_GET['id']);
+    mysqli_stmt_execute($comando);
+    $resultados = mysqli_stmt_get_result($comando);
+    $produto = mysqli_fetch_assoc($resultados);
+
+    $id = $_GET['id'];
+    $nome = $produto['produto_nome'];
+    $preco = $produto['produto_preco'];
+    $categoria_id = $produto['categoria_id'];
+    $foto = $produto['produto_foto'];
+} else {
     echo "<h1>Cadastro de produtos</h1>";
     $id = 0;
     $nome = "";
-    $nascimento = "";
-    $nacionalidade = "";
-}
-
-//  $sql = "SELECT * FROM tb_produto WHERE produto_id = ?";
-//     $comando = mysqli_prepare($conexao, $sql);
-//     mysqli_stmt_bind_param($comando, 'i', $tipo);
-//     mysqli_stmt_execute($comando);
-
-//     $resultados = mysqli_stmt_get_result($comando);
-
-//     $autor = mysqli_fetch_assoc($resultados);
-
-//     $nome = $autor['nome'];
-//     $nascimento = $autor['data_nascimento'];
-//     $nacionalidade = $autor['nacionalidade'];
-//
-
-if (isset($_SESSION['produto_nome'])) {
-    $nome = $_SESSION['produto_nome'];
-}
-
-if (isset($_SESSION['preco'])) {
-    $preco = $_SESSION['preco'];
-}
-
-if (isset($_SESSION['categoria'])) {
-    $categoria = $_SESSION['categoria'];
-}
-
-if (isset($_SESSION['produto_foto'])) {
-    $foto = $_SESSION['produto_foto'];
+    $preco = "";
+    $categoria_id = "";
+    $foto = "";
 }
 
 //
@@ -72,9 +57,9 @@ if ($erro != 0) {
 
 <body>
     <div>
-        <form action="salvar_produto.php" method="POST" enctype="multipart/form-data">
-            <p>Nome</p><input value="<?php echo $nome;?>" type="text" name="nome">
-            <p>Preço</p><input type="number" name="preco">
+        <form action="salvar_produto.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+            <p>Nome</p><input value="<?php echo $nome; ?>" type="text" name="nome">
+            <p>Preço</p><input type="number" name="preco" value="<?php echo $preco; ?>">
             <p>Categoria:</p><select name="categoria">
                 <?php
 
@@ -85,12 +70,23 @@ if ($erro != 0) {
 
                 $resultados = mysqli_stmt_get_result($comando);
                 while ($categoria = mysqli_fetch_assoc($resultados)) {
-                    $categoria = $categoria['categoria_nome'];
-                    echo "<option id='option' value='$categoria'>$categoria</option>";
+                    $categoria_nome = $categoria['categoria_nome'];
+                    $categoria_id_option = $categoria['categoria_id'];
+
+                    // if ($categoria_id == $categoria_id_option) {
+                    //     $selected = "selected";
+                    // }
+                    // else {
+                    //     $selected = "";
+                    // }
+
+                    $selected = ($categoria_id == $categoria_id_option) ? "selected" : "";
+
+                    echo "<option id='option' $selected value='$categoria_id_option'>$categoria_nome</option>";
                 }
                 ?>
             </select>
-            <p>Foto</p><input type="file" name="foto">
+            <p>Foto</p><input type="file" name="foto" value="<?php echo "<img src='../fotos/$foto'>"; ?>">
             <p><input id="submit" type="submit"></p>
         </form>
     </div>

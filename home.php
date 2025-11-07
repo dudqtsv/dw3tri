@@ -17,6 +17,10 @@ $tipo = $_SESSION['tipo'];
         iframe {
             width: 100%;
         }
+        img {
+            border-radius: 50%;
+            width: 50px;
+        }
     </style>
     <title>Document</title>
 </head>
@@ -24,8 +28,11 @@ $tipo = $_SESSION['tipo'];
 <body>
     <?php
     echo "<div>";
-    echo "<p>Olá, $nome! Seja bem vindo(a).</p>";
+    echo "<p>Olá, <a href='usuario/index.php'>$nome</a>! Seja bem vindo(a).</p>";
     echo "</div>";
+    echo "<a href='usuario/index.php'>
+    <img src='../fotos/$foto'>
+    </a>";
     ?>
     <iframe src="produtos/index.php"></iframe>
     <a href="produtos/index.php">Todos os produtos</a>
