@@ -91,22 +91,22 @@ $resultado = mysqli_stmt_get_result($comando);
                 $foto = $produto['produto_foto'];
                 $preco_formatado = number_format(round($preco, 2), 2, ',', '.');
                 ?>
-
                 <div class="card">
-                    <img src="../fotos/<?= htmlspecialchars($foto) ?>" class="card-img-top" alt="<?= htmlspecialchars($nome) ?>">
                     <div class="card-body">
                         <p class="card-text"><?= htmlspecialchars($nome) ?> - R$<?= $preco_formatado ?></p>
+                        <img src="../fotos/<?= htmlspecialchars($foto) ?>" class="card-img-top" alt="<?= htmlspecialchars($nome) ?>">
+
                         <?php if ($tipo != 'c'): ?>
                             <a href="form_produto.php?acao=editar&id=<?= $produto_id ?>">Editar</a>
                             <a href="deletar_produto.php?id=<?= $produto_id ?>">
                                 <img src="../fotos/delete-button.png" width="30px" alt="Excluir">
                             </a>
-                            <?php if ($tipo != 'g') {
-                                echo "<a href='../lista/addLista.php?id=$produto_id'>";
-                                echo "<img src='../fotos/addLista.png' width='30px'>";
-                                echo "</a>";
-                            }
-                            ?>
+                        <?php endif; ?>
+
+                        <?php if ($tipo != 'g'): ?>
+                            <a href="../lista/addLista.php?id=<?= $produto_id ?>">
+                                <img src="../fotos/addLista.png" width="30px" alt="Adicionar à lista">
+                            </a>
                         <?php endif; ?>
                     </div>
                 </div>

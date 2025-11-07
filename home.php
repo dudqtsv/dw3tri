@@ -35,11 +35,14 @@ $tipo = $_SESSION['tipo'];
     <img src='../fotos/$foto'>
     </a>";
     ?>
-    <iframe src="produtos/index.php"></iframe>
+    <iframe src="produtos/listar_produtos.php"></iframe>
     <a href="produtos/index.php">Todos os produtos</a>
     <?php
     if ($tipo != 'g') {
     echo "<a href='lista/index.php'>Minha lista</a>";
+    }
+    else {
+        echo "<a href='estoque/index.php'>Estoque</a>";
     }
     ?>
     <a href="logout.php">Sair</a>

@@ -44,28 +44,33 @@ $tipo = $_SESSION['tipo'];
 </head>
 
 <body>
+  <?php
+  $sql = "SELECT * FROM tb_produto;";
+  $comando = mysqli_prepare($conexao, $sql);
 
-  <?php if (mysqli_num_rows($resultado) > 0): ?>
-    <?php while ($produto = mysqli_fetch_assoc($resultado)): ?>
-      <?php
-      $produto_id = $produto['produto_id'];
-      $nome = $produto['produto_nome'];
-      $preco = $produto['produto_preco'];
-      $foto = $produto['produto_foto'];
-      $preco_formatado = number_format(round($preco, 2), 2, ',', '.');
-      ?>
+  mysqli_stmt_execute($comando);
 
-      <div class="card">
-        <img src="../fotos/<?= htmlspecialchars($foto) ?>" class="card-img-top" alt="<?= htmlspecialchars($nome) ?>">
-        <div class="card-body">
-          <p class="card-text"><?= htmlspecialchars($nome) ?> - R$<?= $preco_formatado ?></p>
-        </div>
-      </div>
+  $resultados = mysqli_stmt_get_result($comando);
 
-    <?php endwhile; ?>
-  <?php else: ?>
-    <p class="mensagem-vazia">Nenhum produto encontrado.</p>
-  <?php endif; ?>
+while ($produto = mysqli_fetch_assoc($resultados)) {
+    $produto_id = $produto['produto_id'];
+    $nome = htmlspecialchars($produto['produto_nome']);
+    $preco = $produto['produto_preco'];
+    $foto = htmlspecialchars($produto['produto_foto']);
+    $preco_formatado = number_format(round($preco, 2), 2, ',', '.');
+
+    echo "<div class='card'>";
+    echo "<img src='../fotos/$foto' class='card-img-top' alt='$nome'>";
+    echo "<div class='card-body'>
+            <p class='card-text'>$nome - R$ $preco_formatado</p>
+          </div>
+        </div>";
+}
+
+  ?>
+
+
 
 </body>
+
 </html>
