@@ -44,7 +44,7 @@ if (isset($_GET['erro'])) {
     $erro = 0;
 }
 if ($erro != 0) {
-    echo "<p>Não deixe nenhum campo vazio!</p>";
+    echo "<p class='erro-msg'>Não deixe nenhum campo vazio!</p>";
 }
 
 ?>
@@ -57,6 +57,8 @@ if ($erro != 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="../css/form_cadastro.css">
+
 </head>
 <body>
     <div>

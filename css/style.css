@@ -1,0 +1,152 @@
+/* ===== Reset básico ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Corpo ===== */
+body {
+    background: linear-gradient(135deg, #f6f9fc, #e8f1ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ===== Cabeçalho com logo ===== */
+nav {
+    width: 100%;
+    background-color: #0b2c66; /* azul principal */
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+nav img {
+    height: 85px;
+}
+
+/* ===== Mensagens de erro (PHP) ===== */
+p:first-of-type,
+p:nth-of-type(2) {
+    background: rgba(255, 255, 255, 0.95);
+    color: #d62828; /* vermelho da logo */
+    border-left: 6px solid #d62828;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+    width: 340px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ===== Formulário ===== */
+form {
+    background-color: #ffffff;
+    padding: 40px 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    width: 360px;
+    margin-top: 25px;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Título ===== */
+form h1 {
+    color: #0b2c66;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+/* ===== Rótulos ===== */
+form p {
+    text-align: left;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* ===== Campos de entrada ===== */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: border 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    border-color: #f1c40f; /* dourado da coroa */
+    box-shadow: 0 0 6px rgba(241, 196, 15, 0.5);
+}
+
+/* ===== Botão ===== */
+#submit {
+    background-color: #0b2c66;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#submit:hover {
+    background-color: #133b80;
+}
+
+/* ===== Link de cadastro ===== */
+form p:last-of-type {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+form a {
+    color: #d62828; 
+    text-decoration: none;
+    font-weight: bold;
+} 
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 400px) {
+    form {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    p:first-of-type,
+    p:nth-of-type(2) {
+        width: 90%;
+    }
+
+    nav img {
+        height: 70px;
+    }
+}
