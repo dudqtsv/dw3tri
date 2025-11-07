@@ -24,6 +24,7 @@ mysqli_stmt_execute($comando);
 $resultado = mysqli_stmt_get_result($comando);
 ?>
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -32,7 +33,7 @@ $resultado = mysqli_stmt_get_result($comando);
     <title>Lista de Produtos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <style>
         body {
             padding: 20px;
@@ -100,23 +101,21 @@ $resultado = mysqli_stmt_get_result($comando);
                             <a href="deletar_produto.php?id=<?= $produto_id ?>">
                                 <img src="../fotos/delete-button.png" width="30px" alt="Excluir">
                             </a>
+                            <?php if ($tipo != 'g') {
+                                echo "<a href='../lista/addLista.php?id=$produto_id'>";
+                                echo "<img src='../fotos/addLista.png' width='30px'>";
+                                echo "</a>";
+                            }
+                            ?>
                         <?php endif; ?>
-                        <?php if ($tipo != 'g') {
-                            echo "<a href='../lista/addLista.php?id=$produto_id'>";
-                            echo "<img src='../fotos/addLista.png' width='30px'>";
-                            echo "</a>";
-                        }
-                        ?>
                     </div>
-                </div> <!-- Faltava este fechamento -->
-
+                </div>
             <?php endwhile; ?>
         <?php else: ?>
             <p class="mensagem-vazia">Nenhum produto encontrado.</p>
         <?php endif; ?>
     </div>
 
-    <!-- Script para rolar suavemente até os resultados -->
     <script>
         window.addEventListener('load', function() {
             if (window.location.hash) {
