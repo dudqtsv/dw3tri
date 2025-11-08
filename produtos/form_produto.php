@@ -51,6 +51,7 @@ if ($erro != 0) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/formProdutos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
 </head>
@@ -86,7 +87,13 @@ if ($erro != 0) {
                 }
                 ?>
             </select>
-            <p>Foto</p><input type="file" name="foto" value="<?php echo "<img src='../fotos/$foto'>"; ?>">
+            <?php
+            if (isset($_GET['id'])) {
+                echo "<p>Foto atual</p>
+            <img src='../fotos/$foto'alt='Foto atual' class='img-thumbnail mb-2' width='120'>";
+            }
+            ?>
+            <p>Editar foto</p><input type="file" name="foto" value="<?php echo "<img src='../fotos/$foto'>"; ?>">
             <p><input id="submit" type="submit"></p>
         </form>
     </div>

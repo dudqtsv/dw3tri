@@ -31,6 +31,7 @@ $resultado = mysqli_stmt_get_result($comando);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="../css/produtos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -93,19 +94,19 @@ $resultado = mysqli_stmt_get_result($comando);
                 ?>
                 <div class="card">
                     <div class="card-body">
+                        <img id="produtoFoto" src="../fotos/<?= htmlspecialchars($foto) ?>" class="card-img-top" alt="<?= htmlspecialchars($nome) ?>">
                         <p class="card-text"><?= htmlspecialchars($nome) ?> - R$<?= $preco_formatado ?></p>
-                        <img src="../fotos/<?= htmlspecialchars($foto) ?>" class="card-img-top" alt="<?= htmlspecialchars($nome) ?>">
 
                         <?php if ($tipo != 'c'): ?>
                             <a href="form_produto.php?acao=editar&id=<?= $produto_id ?>">Editar</a>
                             <a href="deletar_produto.php?id=<?= $produto_id ?>">
-                                <img src="../fotos/delete-button.png" width="30px" alt="Excluir">
+                                <img id="deletar" src="../fotos/delete-button.png" width="30px" alt="Excluir">
                             </a>
                         <?php endif; ?>
 
                         <?php if ($tipo != 'g'): ?>
                             <a href="../lista/addLista.php?id=<?= $produto_id ?>">
-                                <img src="../fotos/addLista.png" width="30px" alt="Adicionar à lista">
+                                <img id="addLista" src="../fotos/addLista.png" width="30px" alt="Adicionar à lista">
                             </a>
                         <?php endif; ?>
                     </div>

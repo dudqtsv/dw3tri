@@ -1,0 +1,156 @@
+/* ---------- Configurações gerais ---------- */
+body {
+    background-color: #f8f9fa;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    padding: 30px;
+}
+
+/* ---------- Título e botões ---------- */
+h2 {
+    text-align: center;
+    font-weight: 600;
+    color: #d32f2f; /* tom vermelho do logo */
+    margin-bottom: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #d32f2f;
+    font-weight: 500;
+    margin-right: 10px;
+    transition: 0.2s ease;
+}
+
+a:hover {
+    color: #9a0007;
+    text-decoration: underline;
+}
+
+/* ---------- Barra de pesquisa ---------- */
+.pesquisa {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.pesquisa input[type="text"] {
+    width: 40%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    transition: 0.2s;
+    outline: none;
+}
+
+.pesquisa input[type="text"]:focus {
+    border-color: #d32f2f;
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.4);
+}
+
+.pesquisa input[type="submit"] {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pesquisa input[type="submit"]:hover {
+    background-color: #9a0007;
+}
+
+/* ---------- Cards de produtos ---------- */
+#resultados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card {
+    width: 12rem;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+#deletar {
+        width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#addLista {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#produtoFoto {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.card-body {
+    padding: 10px;
+}
+
+.card-text {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* ---------- Ícones dentro dos cards ---------- */
+.card a img {
+    transition: 0.2s;
+    margin: 0 3px;
+}
+
+.card a img:hover {
+    transform: scale(1.2);
+}
+
+/* ---------- Mensagem de nenhum resultado ---------- */
+.mensagem-vazia {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    margin-top: 40px;
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 768px) {
+    .pesquisa input[type="text"] {
+        width: 70%;
+    }
+
+    .card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+}

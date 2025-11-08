@@ -1,4 +1,4 @@
-/* ===== Reset básico ===== */
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -6,56 +6,36 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* ===== Corpo ===== */
+/* ===== FUNDO ===== */
 body {
-    background: linear-gradient(135deg, #f6f9fc, #e8f1ff);
+    background: linear-gradient(145deg, #f5e76e, #8b3030);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
 
-/* ===== Cabeçalho com logo ===== */
-nav {
-    width: 100%;
-    background-color: #0b2c66; /* azul principal */
-    text-align: center;
-    padding: 20px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
+/* ===== LOGO ===== */
 nav img {
-    height: 85px;
+    width: 200px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
 
-/* ===== Mensagens de erro (PHP) ===== */
-p:first-of-type,
-p:nth-of-type(2) {
-    background: rgba(255, 255, 255, 0.95);
-    color: #d62828; /* vermelho da logo */
-    border-left: 6px solid #d62828;
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 8px;
-    width: 340px;
-    text-align: center;
-    font-weight: 500;
-}
-
-/* ===== Formulário ===== */
+/* ===== FORM ===== */
 form {
-    background-color: #ffffff;
-    padding: 40px 35px;
+    background: #fff;
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    padding: 40px 35px;
+    width: 380px;
     text-align: center;
-    width: 360px;
-    margin-top: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-top: 5px solid #b11b1b;
     animation: fadeIn 0.6s ease;
 }
 
-/* Animação de entrada */
+/* ===== ANIMAÇÃO ===== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -67,86 +47,96 @@ form {
     }
 }
 
-/* ===== Título ===== */
+/* ===== TÍTULO ===== */
 form h1 {
-    color: #0b2c66;
-    margin-bottom: 25px;
     font-size: 1.8rem;
+    color: #b11b1b;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
-/* ===== Rótulos ===== */
+/* ===== LABELS ===== */
 form p {
     text-align: left;
     color: #333;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
-/* ===== Campos de entrada ===== */
-form input[type="text"],
-form input[type="password"] {
+/* ===== CAMPOS ===== */
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1.5px solid #ccc;
     border-radius: 8px;
+    background-color: #fafafa;
     margin-bottom: 15px;
-    transition: border 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #b11b1b;
+    box-shadow: 0 0 6px rgba(177, 27, 27, 0.3);
     outline: none;
 }
 
-form input[type="text"]:focus,
-form input[type="password"]:focus {
-    border-color: #f1c40f; /* dourado da coroa */
-    box-shadow: 0 0 6px rgba(241, 196, 15, 0.5);
-}
-
-/* ===== Botão ===== */
+/* ===== BOTÃO ===== */
 #submit {
-    background-color: #0b2c66;
+    width: 100%;
+    background-color: #b11b1b;
     color: white;
+    font-weight: 600;
     border: none;
     padding: 12px;
     border-radius: 8px;
-    width: 100%;
+    margin-top: 10px;
     font-size: 1rem;
-    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
 #submit:hover {
-    background-color: #133b80;
+    background-color: #d32f2f;
 }
 
-/* ===== Link de cadastro ===== */
-form p:last-of-type {
-    margin-top: 15px;
-    font-size: 0.9rem;
-}
-
-form a {
-    color: #d62828; 
+/* ===== LINKS ===== */
+a {
+    color: #b11b1b;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
-} 
-
-form a:hover {
-    text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
-/* ===== Responsividade ===== */
-@media (max-width: 400px) {
+a:hover {
+    color: #d4af37;
+}
+
+/* ===== MENSAGENS ===== */
+p:last-child {
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+p.erro-msg {
+    background: #fff8f8;
+    color: #b11b1b;
+    border-left: 5px solid #b11b1b;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 420px) {
     form {
         width: 90%;
-        padding: 30px 20px;
+        padding: 30px 25px;
     }
-
-    p:first-of-type,
-    p:nth-of-type(2) {
-        width: 90%;
-    }
-
     nav img {
-        height: 70px;
+        width: 150px;
     }
 }
