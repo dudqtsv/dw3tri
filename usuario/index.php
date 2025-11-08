@@ -81,7 +81,7 @@ if (!$usuario) die("Usuário não encontrado.");
 <body>
     <div class="profile-card">
         <div class="profile-header">
-            <h3><?= htmlspecialchars($usuario['usuario_nome']) ?></h3>
+            <h3>Headeeeer</h3>
         </div>
 
         <img src="../fotos/<?= htmlspecialchars($usuario['usuario_foto'] ?: 'default.png') ?>"

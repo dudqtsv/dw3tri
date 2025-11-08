@@ -30,8 +30,14 @@ if ($id == 0) {
     $sql = "INSERT INTO tb_usuario (usuario_nome, usuario_datanascimento, usuario_email, usuario_senha, usuario_foto) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando, 'sssss', $nome, $data_nascimento, $email, $senha, $novo_nome);
-} 
-else {
+    
+    mysqli_stmt_execute($comando);
+
+
+    mysqli_stmt_close($comando);
+
+    header("Location: ../usuario/index.php?id=$id");
+} else {
 
     if ($nome_arquivo == "") {
         $sql = "UPDATE tb_usuario SET usuario_nome = ?, usuario_datanascimento = ?, usuario_email = ? , usuario_senha = ? WHERE usuario_id = ?";
@@ -48,13 +54,10 @@ else {
         $comando = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($comando, 'sssssi', $nome, $data_nascimento, $email, $senha, $novo_nome, $id);
     }
+    mysqli_stmt_execute($comando);
+
+
+    mysqli_stmt_close($comando);
+
+    header("Location: ../usuario/index.php?id=$id");
 }
-
-//
-
-mysqli_stmt_execute($comando);
-
-
-mysqli_stmt_close($comando);
-
-header("Location: ../usuario/index.php?id=$id");
