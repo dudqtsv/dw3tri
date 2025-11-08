@@ -2,7 +2,7 @@
 require 'verificar_login.php';
 verificarLogin();
 
-$id_usuario = $_SESSION['id'];
+$id = $_SESSION['id'];
 $foto = $_SESSION['foto'];
 $nome = $_SESSION['nome'];
 $tipo = $_SESSION['tipo'];
@@ -29,7 +29,7 @@ $tipo = $_SESSION['tipo'];
 <body>
     <?php
     echo "<div>";
-    echo "<p>Olá, <a href='usuario/index.php'>$nome</a>! Seja bem vindo(a).</p>";
+    echo "<p>Olá, <a href='usuario/index.php?id=$id'>$nome</a>! Seja bem vindo(a).</p>";
     echo "</div>";
     echo "<a href='usuario/index.php'>
     <img src='../fotos/$foto'>
