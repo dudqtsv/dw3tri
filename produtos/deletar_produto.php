@@ -13,6 +13,6 @@ $stmtProduto = mysqli_prepare($conexao, $sqlProduto);
 mysqli_stmt_bind_param($stmtProduto, "i", $id);
 mysqli_stmt_execute($stmtProduto);
 
-header("Location: index.php");
+header("Location: ../estoque/index.php");
 exit;
 ?>

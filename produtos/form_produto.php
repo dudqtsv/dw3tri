@@ -8,7 +8,7 @@ if ($tipo != 'g') {
 
 //
 
-if (isset($_GET['acao'])) {
+if (isset($_GET['id'])) {
     echo "<h1>Editar produto</h1>";
 
     $sql = "SELECT * FROM tb_produto WHERE produto_id = ?";
@@ -97,7 +97,7 @@ if ($erro != 0) {
             <p><input id="submit" type="submit"></p>
         </form>
     </div>
-    <a href="index.php">Cancelar</a>
+    <a href="../estoque/index.php">Cancelar</a>
 </body>
 
 </html>

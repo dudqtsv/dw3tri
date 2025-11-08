@@ -55,4 +55,4 @@ if ($tipo == 'c') {
     $_SESSION['foto'] = $gerente['usuario_foto'];
     $_SESSION['tipo'] = $gerente['usuario_tipo'];
 }
-header('Location: ../home.php?id=$id');
+header('Location: ../home.php');
