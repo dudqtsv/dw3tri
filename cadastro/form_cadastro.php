@@ -230,7 +230,16 @@ if ($erro != 0) {
 
 <body>
     <form action="salvar_usuario.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
-        <h1><?= isset($_GET['id']) ? 'Editar Perfil' : 'Criar Nova Conta' ?></h1>
+        <h1>
+            <?php
+            if (isset($_GET['id'])) {
+                echo "Editar Perfil";
+            } else {
+                echo "Criar Nova Conta";
+            }
+            ?>
+        </h1>
+
         <p>Nome</p><input type="text" name="nome" value="<?php echo $nome; ?>">
         <p>Data de nascimento</p><input type="date" name="data_nascimento" value="<?php echo $data_nascimento; ?>">
         <p>E-mail</p><input type="email" name="email" value="<?php echo $email; ?>">
@@ -243,14 +252,15 @@ if ($erro != 0) {
             echo "<p>Foto de perfil</p>
             <img src='../fotos/$foto'alt='Foto atual' class='img-thumbnail mb-2' width='120'>
             <input type='file' name='foto'>";
+        } else {
+            echo "<input type='file' name='foto'>";
         }
         ?>
 
         <button type="submit" id="submit">Salvar alterações</button>
         <?php if (isset($_GET['id'])) {
-        echo "<a href='../usuario/index.php?id=$id'>Cancelar</a>";
-        }
-        else {
+            echo "<a href='../usuario/index.php?id=$id'>Cancelar</a>";
+        } else {
             echo "<a href='../index.php?id=$id'>Cancelar</a>";
         }
         ?>

@@ -6,6 +6,7 @@ $nome = $_POST['nome'];
 $data_nascimento = $_POST['data_nascimento'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
+$foto = $_FILES['foto'];
 $_SESSION['nome_usuario'] = $nome;
 
 if (empty($email) || empty($senha) || empty($nome) || empty($data_nascimento)) {
@@ -16,8 +17,8 @@ $nome_arquivo = $_FILES['foto']['name'];
 //
 $id = $_GET['id'];
 if ($id == 0) {
-    // Caso de inserção
-    if ($nome_arquivo == "") {
+    // criar conta
+    if (empty($nome_arquivo)) {
         $novo_nome = "../fotos/generico.png";
     } else {
         $caminho_temporario = $_FILES['foto']['tmp_name'];
@@ -36,9 +37,10 @@ if ($id == 0) {
 
     mysqli_stmt_close($comando);
 
-    header("Location: ../usuario/index.php?id=$id");
-} else {
-
+    header("Location: ../index.php?id=$id");
+} 
+else {
+    // editar
     if ($nome_arquivo == "") {
         $sql = "UPDATE tb_usuario SET usuario_nome = ?, usuario_datanascimento = ?, usuario_email = ? , usuario_senha = ? WHERE usuario_id = ?";
         $comando = mysqli_prepare($conexao, $sql);
@@ -58,6 +60,6 @@ if ($id == 0) {
 
 
     mysqli_stmt_close($comando);
-
+    
     header("Location: ../usuario/index.php?id=$id");
 }
